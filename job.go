@@ -53,9 +53,9 @@ type ParameterDefinition struct {
 }
 
 type JobResponse struct {
-	Actions            []generalObj
+	Actions            []generalObj `json:"actions"`
 	Buildable          bool `json:"buildable"`
-	Builds             []JobBuild
+	Builds             []JobBuild `json:"builds"`
 	Color              string      `json:"color"`
 	ConcurrentBuild    bool        `json:"concurrentBuild"`
 	Description        string      `json:"description"`
