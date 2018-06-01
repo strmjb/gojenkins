@@ -32,8 +32,10 @@ type Job struct {
 }
 
 type JobBuild struct {
-	Number int64
-	URL    string
+	Number    int64        `json:"number"`
+	URL       string       `json:"url"`
+	Actions   []GeneralObj `json:"actions"`
+	Timestamp int          `json:"timestamp"`
 }
 
 type InnerJob struct {
@@ -53,15 +55,15 @@ type ParameterDefinition struct {
 }
 
 type JobResponse struct {
-	Actions            []generalObj `json:"actions"`
-	Buildable          bool `json:"buildable"`
-	Builds             []JobBuild `json:"builds"`
-	Color              string      `json:"color"`
-	ConcurrentBuild    bool        `json:"concurrentBuild"`
-	Description        string      `json:"description"`
-	DisplayName        string      `json:"displayName"`
-	DisplayNameOrNull  interface{} `json:"displayNameOrNull"`
-	DownstreamProjects []InnerJob  `json:"downstreamProjects"`
+	Actions            []GeneralObj `json:"actions"`
+	Buildable          bool         `json:"buildable"`
+	Builds             []JobBuild   `json:"builds"`
+	Color              string       `json:"color"`
+	ConcurrentBuild    bool         `json:"concurrentBuild"`
+	Description        string       `json:"description"`
+	DisplayName        string       `json:"displayName"`
+	DisplayNameOrNull  interface{}  `json:"displayNameOrNull"`
+	DownstreamProjects []InnerJob   `json:"downstreamProjects"`
 	FirstBuild         JobBuild
 	HealthReport       []struct {
 		Description   string `json:"description"`
@@ -69,18 +71,18 @@ type JobResponse struct {
 		IconUrl       string `json:"iconUrl"`
 		Score         int64  `json:"score"`
 	} `json:"healthReport"`
-	InQueue               bool     `json:"inQueue"`
-	KeepDependencies      bool     `json:"keepDependencies"`
-	LastBuild             JobBuild `json:"lastBuild"`
-	LastCompletedBuild    JobBuild `json:"lastCompletedBuild"`
-	LastFailedBuild       JobBuild `json:"lastFailedBuild"`
-	LastStableBuild       JobBuild `json:"lastStableBuild"`
-	LastSuccessfulBuild   JobBuild `json:"lastSuccessfulBuild"`
-	LastUnstableBuild     JobBuild `json:"lastUnstableBuild"`
-	LastUnsuccessfulBuild JobBuild `json:"lastUnsuccessfulBuild"`
-	Name                  string   `json:"name"`
-	SubJobs               []InnerJob    `json:"jobs"`
-	NextBuildNumber       int64    `json:"nextBuildNumber"`
+	InQueue               bool       `json:"inQueue"`
+	KeepDependencies      bool       `json:"keepDependencies"`
+	LastBuild             JobBuild   `json:"lastBuild"`
+	LastCompletedBuild    JobBuild   `json:"lastCompletedBuild"`
+	LastFailedBuild       JobBuild   `json:"lastFailedBuild"`
+	LastStableBuild       JobBuild   `json:"lastStableBuild"`
+	LastSuccessfulBuild   JobBuild   `json:"lastSuccessfulBuild"`
+	LastUnstableBuild     JobBuild   `json:"lastUnstableBuild"`
+	LastUnsuccessfulBuild JobBuild   `json:"lastUnsuccessfulBuild"`
+	Name                  string     `json:"name"`
+	SubJobs               []InnerJob `json:"jobs"`
+	NextBuildNumber       int64      `json:"nextBuildNumber"`
 	Property              []struct {
 		ParameterDefinitions []ParameterDefinition `json:"parameterDefinitions"`
 	} `json:"property"`

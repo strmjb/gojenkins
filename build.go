@@ -58,7 +58,7 @@ type Culprit struct {
 	FullName    string
 }
 
-type generalObj struct {
+type GeneralObj struct {
 	Parameters              []parameter              `json:"parameters"`
 	Causes                  []map[string]interface{} `json:"causes"`
 	BuildsByBranchName      map[string]Builds        `json:"buildsByBranchName"`
@@ -103,7 +103,7 @@ type TestResult struct {
 }
 
 type BuildResponse struct {
-	Actions   []generalObj
+	Actions   []GeneralObj
 	Artifacts []struct {
 		DisplayPath  string `json:"displayPath"`
 		FileName     string `json:"fileName"`
@@ -162,7 +162,7 @@ func (b *Build) Info() *BuildResponse {
 	return b.Raw
 }
 
-func (b *Build) GetActions() []generalObj {
+func (b *Build) GetActions() []GeneralObj {
 	return b.Raw.Actions
 }
 
